@@ -19,6 +19,6 @@ endif()
 set(TEST_OUTPUT_PATH ${CMAKE_BINARY_DIR}/test)
 
 
-add_subdirectory(lib)
+add_subdirectory(libs)
 add_subdirectory(main)
 
