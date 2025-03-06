@@ -2,7 +2,7 @@ project(libs)
 
 if(UNITTEST)
     set(BUILD_GMOCK OFF)
-    add_subdirectory(test)
+    add_subdirectory(gtest_framework)
     include(CTest)
 endif()
 
