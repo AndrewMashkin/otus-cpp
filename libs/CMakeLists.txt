@@ -1,7 +1,8 @@
 project(libs)
 
 if(UNITTEST)
+    set(BUILD_GMOCK OFF)
     add_subdirectory(test)
-    enable_testing()
+    include(CTest)
 endif()
 

@@ -1,24 +1,22 @@
-cmake_minimum_required(VERSION 3.12)
+cmake_minimum_required(VERSION 3.16.1)
 
-project(otus_home_works )
+project(otus_home_works)
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 option(UNITTEST "on/off unittest" ON)
 
-if(UNIX)
-     set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/lib)
-    set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_DEBUG ${CMAKE_BINARY_DIR}/bin/lib)
-    set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELEASE ${CMAKE_BINARY_DIR}/bin/lib)
-elseif(WIN32)
-    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/)
-    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_BINARY_DIR}/bin/)
-    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_BINARY_DIR}/bin/)
-endif()
-
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/)
+set(LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(TEST_OUTPUT_PATH ${CMAKE_BINARY_DIR}/test)
 
+if(UNITTEST)
+    enable_testing()
+endif()
 
 add_subdirectory(libs)
+
+
+
 add_subdirectory(main)
 

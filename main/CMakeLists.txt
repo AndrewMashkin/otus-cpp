@@ -11,18 +11,14 @@ file(GLOB_RECURSE SOURCES
         ${CMAKE_CURRENT_SOURCE_DIR}/include/*.h
         ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
 
-
 add_executable(${PROJECT_NAME} src/main.cpp)
-add_library(version_lib src/version_api.cpp include/)
-
+add_library(version_lib STATIC src/version_api.cpp)
 
 target_include_directories(version_lib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_include_directories(version_lib PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include/version_api)
 target_include_directories(version_lib PRIVATE "${CMAKE_CURRENT_BINARY_DIR}")
 
-
 target_link_libraries(${PROJECT_NAME} PUBLIC version_lib)
-
 
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
 
