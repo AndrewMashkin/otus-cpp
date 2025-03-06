@@ -16,7 +16,7 @@ jobs:
       - run: sudo apt-get update
       - run: cmake . -DPATCH_VERSION=${{ github.run_number }} -DUNITTEST=ON
       - run: cmake --build .
-      - run: ctest -V --output-on-failure
+      - run: mkdir test && ctest -V --output-on-failure
       - run: cmake --build . --target package
       - name: Create Release
         id: create_release
