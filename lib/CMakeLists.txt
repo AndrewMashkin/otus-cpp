@@ -1,4 +1,7 @@
 project(libs)
 
+if(UNITTEST)
+    add_subdirectory(test)
+    enable_testing()
+endif()
 
-add_subdirectory(version)
