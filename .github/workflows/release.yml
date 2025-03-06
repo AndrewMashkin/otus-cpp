@@ -16,7 +16,7 @@ jobs:
       - run: sudo apt-get update
       - run: cmake . -DPATCH_VERSION=${{ github.run_number }} -DUNITTEST=ON
       - run: cmake --build .
-      - run: ctest -V --output-on-failure
+      - run: mkdir test && ctest -V --output-on-failure
       - run: cmake --build . --target package
       - name: Create Release
         id: create_release
@@ -35,6 +35,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./helloworld-0.0.${{ github.run_number }}-Linux.deb
+          asset_path: ./bin/helloworld-0.0.${{ github.run_number }}-Linux.deb
           asset_name: helloworld-0.0.${{ github.run_number }}-Linux.deb
           asset_content_type: application/vnd.debian.binary-package
