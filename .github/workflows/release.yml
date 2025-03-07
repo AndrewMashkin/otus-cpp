@@ -9,15 +9,33 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container: ubuntu:22.04  # Используем конкретную версию Ubuntu
     steps:
       - uses: actions/checkout@v2
         with:
           submodules: true
-      - run: sudo apt-get update
-      - run: cmake . -DPATCH_VERSION=${{ github.run_number }} -DUNITTEST=ON
-      - run: cmake --build .
-      - run: mkdir test && ctest -V --output-on-failure
-      - run: cmake --build . --target package
+
+      - name: Install dependencies
+        run: |
+          apt-get update
+          apt-get install -y build-essential cmake libssl-dev
+
+      - name: Configure CMake
+        run: |
+          cmake . -DPATCH_VERSION=${{ github.run_number }} -DUNITTEST=ON \
+            -DCMAKE_CXX_FLAGS="-static-libstdc++ -static-libgcc"
+
+      - name: Build project
+        run: cmake --build .
+
+      - name: Run tests
+        run: |
+          mkdir -p test
+          ctest -V --output-on-failure
+
+      - name: Create DEB package
+        run: cmake --build . --target package
+
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -28,6 +46,7 @@ jobs:
           release_name: Release ${{ github.run_number }}
           draft: false
           prerelease: false
+
       - name: Upload Release Asset
         id: upload-release-asset
         uses: actions/upload-release-asset@v1
