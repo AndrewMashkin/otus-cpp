@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.16.1)
+cmake_minimum_required(VERSION 3.22)
 
 project(otus_home_works)
 
@@ -15,8 +15,5 @@ if(UNITTEST)
 endif()
 
 add_subdirectory(libs)
-
-
-
 add_subdirectory(main)
 
