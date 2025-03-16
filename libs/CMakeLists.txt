@@ -5,3 +5,5 @@ if(UNITTEST)
     include(CTest)
 endif()
 
+add_subdirectory(ip)
+add_subdirectory(ip_loader)
