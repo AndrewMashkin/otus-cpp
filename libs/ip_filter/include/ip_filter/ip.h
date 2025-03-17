@@ -11,10 +11,14 @@ struct IP{
     IP(uint8_t n1,uint8_t n2,uint8_t n3, uint8_t n4);
 
     uint8_t operator [](size_t index)const;
+
+    bool operator <(const IP& other)const;
+
+    bool operator ==(const IP& other)const;
+
 private:
     const std::array<uint8_t,maxAddrCount > ip;
 };
-
 
 using IpTable=std::vector<IP>;
 

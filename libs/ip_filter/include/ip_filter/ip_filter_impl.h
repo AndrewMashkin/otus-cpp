@@ -12,7 +12,8 @@ struct FilterInfo{
 
 
 struct SimpleFilter : public IIPFilter{
-    SimpleFilter(const FilterInfo& filterInfo);
+    explicit  SimpleFilter(const FilterInfo& filterInfo);
+
     IpTable filter(const IpTable& ipTable) override;
     ~SimpleFilter() override=default;
 private:

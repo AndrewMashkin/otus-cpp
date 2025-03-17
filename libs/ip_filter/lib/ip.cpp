@@ -1,4 +1,5 @@
 #include "ip.h"
+#include <tuple>
 
 IP::IP(uint8_t n1,uint8_t n2,uint8_t n3, uint8_t n4):ip{n1,n2,n3,n4}{}
 
@@ -8,6 +9,16 @@ uint8_t IP::operator [](size_t index)const{
     }
 
     return ip[index];
+}
+
+bool IP::operator <(const IP& other)const{
+    return std::tie(ip[0],ip[1],ip[2],ip[3])<
+            std::tie(other.ip[0],other.ip[1],other.ip[2],other.ip[3]);
+}
+
+bool IP::operator ==(const IP& other)const{
+    return std::tie(ip[0],ip[1],ip[2],ip[3])==
+            std::tie(other.ip[0],other.ip[1],other.ip[2],other.ip[3]);
 }
 
 std::ostream& operator << (std::ostream &os, const IP &ip){
