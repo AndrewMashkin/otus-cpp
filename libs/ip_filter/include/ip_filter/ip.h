@@ -17,10 +17,10 @@ struct IP{
     bool operator ==(const IP& other)const;
 
 private:
-    const std::array<uint8_t,maxAddrCount > ip;
+    const std::array<uint8_t,maxAddrCount> addrs;
 };
 
-using IpTable=std::vector<IP>;
+using IPTable=std::vector<IP>;
 
 std::ostream& operator << (std::ostream &os, const IP &ip);
-std::ostream& operator << (std::ostream &os, const IpTable &ipTable);
+std::ostream& operator << (std::ostream &os, const IPTable &ipTable);

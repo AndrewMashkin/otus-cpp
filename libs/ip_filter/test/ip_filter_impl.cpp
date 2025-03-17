@@ -19,7 +19,7 @@ TEST(IPFilter, Constructor_InvalidInfo_CatchThrow)
 
 TEST(IPFilter, Filter_FilterByOneValue_Success)
 {
-    IpTable ipTable{{127,13,55,4},{127,4,33,4},
+    IPTable ipTable{{127,13,55,4},{127,4,33,4},
                     {9,13,55,4} };
 
     FilterInfo info;
@@ -37,7 +37,7 @@ TEST(IPFilter, Filter_FilterByOneValue_Success)
 TEST(IPFilter, Filter_FilterByTwoValue_Success)
 {
 
-    IpTable ipTable{{127,13,55,4},{127,4,33,4},
+    IPTable ipTable{{127,13,55,4},{127,4,33,4},
                     {9,13,55,4}, {1,13,9,4} };
 
     FilterInfo info;
@@ -59,7 +59,7 @@ TEST(IPFilter, Filter_FilterByAll_Success)
 {
     IP ip(127,13,55,4);
 
-    IpTable ipTable{{127,13,55,4},{127,4,33,4},
+    IPTable ipTable{{127,13,55,4},{127,4,33,4},
                     {9,13,55,4} };
     FilterInfo info;
     info.filterCoef.at(0)=std::make_pair(0,9);
@@ -80,7 +80,7 @@ TEST(IPFilter, Filter_NotFoundIp_Success)
 {
     IP ip(127,13,55,4);
 
-    IpTable ipTable{{127,13,55,4},{127,4,33,4},
+    IPTable ipTable{{127,13,55,4},{127,4,33,4},
                     {9,13,55,4} };
 
     FilterInfo info;

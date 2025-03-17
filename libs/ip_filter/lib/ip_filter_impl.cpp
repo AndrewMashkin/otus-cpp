@@ -23,8 +23,8 @@ bool SimpleFilter::checkIp(const IP& ip) const{
     return true;
 }
 
-IpTable SimpleFilter::filter(const IpTable& ipTable) {
-    IpTable resTable;
+IPTable SimpleFilter::filter(const IPTable& ipTable) {
+    IPTable resTable;
     for(const auto& ip:ipTable){
         if(checkIp(ip)){
             resTable.push_back(ip);

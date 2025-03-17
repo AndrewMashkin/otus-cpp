@@ -14,7 +14,7 @@ struct FilterInfo{
 struct SimpleFilter : public IIPFilter{
     explicit  SimpleFilter(const FilterInfo& filterInfo);
 
-    IpTable filter(const IpTable& ipTable) override;
+    IPTable filter(const IPTable& ipTable) override;
     ~SimpleFilter() override=default;
 private:
     std::vector<FilterInfo::FilterPair> filterCoef;

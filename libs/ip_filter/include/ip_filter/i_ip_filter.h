@@ -3,7 +3,7 @@
 #include "ip.h"
 
 struct IIPFilter{
-    virtual IpTable filter(const IpTable& ipTable)=0;
+    virtual IPTable filter(const IPTable& ipTable)=0;
     virtual ~IIPFilter()=default;
 };
 
