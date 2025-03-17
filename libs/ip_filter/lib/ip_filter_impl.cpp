@@ -1,6 +1,6 @@
 #include "ip_filter_impl.h"
 
-SimpleFilter::SimpleFilter(const FilterInfo& filterInfo){
+Filter::Filter(const FilterInfo& filterInfo, const Strategy &strategy){
 
     for(const auto& coef:filterInfo.filterCoef){
         if(coef.has_value()){
@@ -12,21 +12,39 @@ SimpleFilter::SimpleFilter(const FilterInfo& filterInfo){
             filterCoef.push_back(coef.value());
         }
     }
-}
-bool SimpleFilter::checkIp(const IP& ip) const{
 
-    for(const auto& coef:filterCoef){
-        if(ip[coef.first]!=coef.second){
+    if(strategy==Strategy::givenOrder){
+        checker=[this](const IP& ip)->bool
+        {
+            for(const auto& coef:filterCoef){
+                if(ip[coef.first]!=coef.second){
+                    return false;
+                }
+            }
+            return true;
+        };
+    }else{
+        checker=[this](const IP& ip)->bool
+        {
+            for(const auto& coef:filterCoef){
+               for(size_t addr=0;addr<IP::maxAddrCount;++addr){
+                    if(ip[addr]==coef.second){
+                        return true;
+                    }
+               }
+
+            }
             return false;
-        }
+        };
     }
-    return true;
+
+
 }
 
-IPTable SimpleFilter::filter(const IPTable& ipTable) {
+IPTable Filter::filter(const IPTable& ipTable) const {
     IPTable resTable;
     for(const auto& ip:ipTable){
-        if(checkIp(ip)){
+        if(checker(ip)){
             resTable.push_back(ip);
         }
     }

@@ -1,22 +1,32 @@
 #pragma once
 
-#include "i_ip_filter.h"
+#include "ip.h"
 #include <optional>
+#include <functional>
 
 struct FilterInfo{
     using FilterPair=std::pair<size_t,uint8_t>;
     std::array<std::optional<FilterPair>,IP::maxAddrCount> filterCoef;
 };
 
-/// filter для случая хотябы 1
+enum class Strategy{
+    givenOrder,
+    atLeastOne
+};
 
+struct Filter{
+    explicit  Filter(const FilterInfo& filterInfo,const Strategy& strategy);
 
-struct SimpleFilter : public IIPFilter{
-    explicit  SimpleFilter(const FilterInfo& filterInfo);
-
-    IPTable filter(const IPTable& ipTable) override;
-    ~SimpleFilter() override=default;
+    IPTable filter(const IPTable& ipTable) const;
+    ~Filter() =default;
 private:
     std::vector<FilterInfo::FilterPair> filterCoef;
-    bool checkIp(const IP& ip) const;
+
+    using Checker=std::function<bool(const IP& ip)>;
+    Checker checker;
+
+
+    /// mmethod for create checker
+
+
 };
