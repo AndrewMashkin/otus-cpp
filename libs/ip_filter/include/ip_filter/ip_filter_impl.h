@@ -25,8 +25,4 @@ private:
     using Checker=std::function<bool(const IP& ip)>;
     Checker checker;
 
-
-    /// mmethod for create checker
-
-
 };
