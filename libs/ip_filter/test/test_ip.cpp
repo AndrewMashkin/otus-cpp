@@ -1,6 +1,7 @@
 #include "ip_filter/ip.h"
 #include "gtest/gtest.h"
 
+
 TEST(IP, Constructor_Create_NoThrow)
 {
     ASSERT_NO_THROW(IP(120,22,1,5));

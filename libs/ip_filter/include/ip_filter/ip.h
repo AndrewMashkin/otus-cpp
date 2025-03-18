@@ -5,6 +5,8 @@
 #include <cstddef>
 #include <iostream>
 
+
+
 struct IP{
     static const size_t maxAddrCount{4};
 

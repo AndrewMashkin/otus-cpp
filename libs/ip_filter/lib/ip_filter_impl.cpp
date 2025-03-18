@@ -1,5 +1,7 @@
 #include "ip_filter_impl.h"
 
+
+
 Filter::Filter(const FilterInfo& filterInfo, const Strategy &strategy){
 
     for(const auto& coef:filterInfo.filterCoef){

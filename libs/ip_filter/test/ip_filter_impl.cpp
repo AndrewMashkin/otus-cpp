@@ -1,6 +1,7 @@
 #include "ip_filter/ip_filter_impl.h"
 #include "gtest/gtest.h"
 
+
 TEST(IPFilter, Constructor_InvalidInfo_CatchThrow)
 {
     FilterInfo info;

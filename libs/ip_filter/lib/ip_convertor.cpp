@@ -1,10 +1,8 @@
-#include "ip_parser.h"
+#include "ip_convertor.h"
 #include <sstream>
 
-using namespace IPFilter;
 
-
-IP IPParser::parse(const std::string& strIp){
+IP IPConvertor::convert(const std::string& strIp){
 
     std::string token;
     std::istringstream strStram(strIp);
@@ -27,19 +25,15 @@ IP IPParser::parse(const std::string& strIp){
 
 }
 
-
-IPTable IPParser::parse(std::vector<std::string>&& strTable){
+IPTable IPConvertor::convert(std::vector<std::string>&& strTable){
 
     IPTable table;
     table.reserve(strTable.size());
 
     for(const auto& strIp:strTable){
-        table.push_back(IPParser::parse(strIp));
+        table.push_back(IPConvertor::convert(strIp));
     }
 
     return table;
 
 }
-
-
-
