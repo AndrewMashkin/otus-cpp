@@ -1,8 +1,6 @@
 #include "ip_filter/ip_convertor.h"
 #include "gtest/gtest.h"
 
-
-
 TEST(IPConvertor, Parse_ValidIp_SuccessEq)
 {
     std::string ip="134.22.1.2";
