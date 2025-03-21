@@ -26,8 +26,11 @@ std::ostream& operator << (std::ostream &os, const IP &ip){
     return os<<(int)ip[0]<<"."<<(int)ip[1]<<"."<<(int)ip[2]<<"."<<(int)ip[3];
 }
 std::ostream& operator << (std::ostream &os, const IPTable &ipTable){
-    for(const auto& ip:ipTable){
-        os<<ip;
+    for (auto it = ipTable.begin(); it != ipTable.end(); ++it) {
+        os << *it;
+        if (std::next(it) != ipTable.end()) {
+            os << std::endl;
+        }
     }
-    return os ;
+    return os;
 }

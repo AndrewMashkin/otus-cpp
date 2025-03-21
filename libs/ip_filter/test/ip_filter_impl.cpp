@@ -27,6 +27,7 @@ TEST(IPFilter, Filter_FilterByOneValue_Success)
 
     Filter filter(info,Strategy::givenOrder);
     auto newTable=filter.filter(ipTable);
+    std::cerr<<newTable<<std::endl;
 
     ASSERT_EQ(newTable.size(),2);
     ASSERT_EQ(newTable.at(0),ipTable.at(0));

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ip.h"
+#include "i_ip_filter.h"
 #include <optional>
 #include <functional>
 
@@ -14,11 +14,11 @@ enum class Strategy{
     atLeastOne
 };
 
-struct Filter{
+struct Filter : public IFilter{
     explicit  Filter(const FilterInfo& filterInfo,const Strategy& strategy);
 
-    IPTable filter(const IPTable& ipTable) const;
-    ~Filter() =default;
+    IPTable filter(const IPTable& ipTable) const override;
+    ~Filter() override =default;
 private:
     std::vector<FilterInfo::FilterPair> filterCoef;
 
