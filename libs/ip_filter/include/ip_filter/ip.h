@@ -19,7 +19,7 @@ struct IP{
     bool operator ==(const IP& other)const;
 
 private:
-    const std::array<uint8_t,maxAddrCount> addrs;
+     std::array<uint8_t,maxAddrCount> addrs;
 };
 
 using IPTable=std::vector<IP>;

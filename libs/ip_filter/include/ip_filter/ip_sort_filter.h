@@ -5,7 +5,5 @@
 struct SortFilter : public IFilter{
     IPTable filter(const IPTable& ipTable) const override;
     ~SortFilter() override =default;
-private:
-
 };
 
