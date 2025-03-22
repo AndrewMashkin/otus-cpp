@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.0)
 
-project(ip_loader)
+project(ip_utility)
 
 set(CMAKE_CXX_STANDARD_REQUIRED 17)
 
@@ -19,7 +19,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/in
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/lib)
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include/${PROJECT_NAME})
 
-if(UNITTEST)
-	include(unittest.cmake)
-endif()
 
+if(UNITTEST)
+        include(unittest.cmake)
+endif()

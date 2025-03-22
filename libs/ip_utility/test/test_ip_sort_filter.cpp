@@ -1,4 +1,4 @@
-#include "ip_filter/ip_sort_filter.h"
+#include "ip_utility/ip_sort_filter.h"
 #include "gtest/gtest.h"
 
 TEST(IPSortFilter, Filter_FilterValidTable_Success)

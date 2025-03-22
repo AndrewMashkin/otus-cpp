@@ -5,5 +5,4 @@ if(UNITTEST)
     include(CTest)
 endif()
 
-add_subdirectory(ip_filter)
-add_subdirectory(ip_loader)
+add_subdirectory(ip_utility)
