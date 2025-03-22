@@ -18,12 +18,12 @@ target_include_directories(version_lib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/includ
 target_include_directories(version_lib PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include/version_api)
 target_include_directories(version_lib PRIVATE "${CMAKE_CURRENT_BINARY_DIR}")
 
-target_link_libraries(${PROJECT_NAME} PUBLIC version_lib)
+target_link_libraries(${PROJECT_NAME} PUBLIC version_lib ip_utility)
 
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)
 
 set(CPACK_GENERATOR DEB)
-set(CPACK_PACKAGE_NAME helloworld)
+set(CPACK_PACKAGE_NAME ip_filter)
 set(CPACK_PACKAGE_VERSION_MAJOR "${PROJECT_VERSION_MAJOR}")
 set(CPACK_PACKAGE_VERSION_MINOR "${PROJECT_VERSION_MINOR}")
 set(CPACK_PACKAGE_VERSION_PATCH "${PROJECT_VERSION_PATCH}")

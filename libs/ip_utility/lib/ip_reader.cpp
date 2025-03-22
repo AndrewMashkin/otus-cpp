@@ -35,8 +35,10 @@ std::vector<std::string> IPReader::read(std::istream& input) {
         std::string text1, text2, text3;
 
         if (std::getline(iss, text1, '\t') &&
-            std::getline(iss, text2, '\t') &&
-            std::getline(iss, text3, '\t')) {
+                std::getline(iss, text2, '\t') &&
+                std::getline(iss, text3, '\t')) {
+
+            //std::cerr << "Прочитано: " << text1 << " | " << text2 << " | " << text3 << std::endl;
 
             if (isValidIPv4(text1)) {
                 ipAddresses.push_back(text1);
